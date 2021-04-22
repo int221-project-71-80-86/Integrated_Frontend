@@ -10,8 +10,8 @@
 
                     <div class="container mx-auto">
                         <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
-                            <p class="text-black text-2xl my-4">Outdoor Leather Shoes</p>
-                            <a class="text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="#">view product</a>
+                            <p class="text-white text-2xl my-4">Outdoor Leather Shoes</p>
+                            <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="#">Outdoor</a>
                         </div>
                     </div>
 
@@ -27,8 +27,8 @@
 
                     <div class="container mx-auto">
                         <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
-                            <p class="text-black text-2xl my-4">Unpaired Orange And White Nike Air Huarache</p>
-                            <a class="text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="#">view product</a>
+                            <p class="text-white text-2xl my-4">Unpaired Orange And White Nike Air Huarache</p>
+                            <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="#">Nike Airg</a>
                         </div>
                     </div>
 
@@ -45,7 +45,7 @@
                     <div class="container mx-auto">
                         <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
                             <p class="text-white text-2xl my-4">White Sneaker Waterproof</p>
-                            <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="#">view product</a>
+                            <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="#">Adidas</a>
                         </div>
                     </div>
 
