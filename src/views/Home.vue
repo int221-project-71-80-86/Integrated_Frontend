@@ -1,17 +1,15 @@
 <template>
-  <div class="home">
-    <Index></Index>
+  <div class="home w-full mx-auto">
+    <nav-bar></nav-bar>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Index from '@/components/Index.vue'
+
 
 export default {
   name: 'Home',
-  components: {
-    Index
-  }
+ 
 }
 </script>
