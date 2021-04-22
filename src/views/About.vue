@@ -1,6 +1,6 @@
 <template>
 <div class="bg-white">
-<nav-bar class="-ml-10 bg-white"></nav-bar>
+<nav-bar class="bg-white"></nav-bar>
 <div class="h-screen flex justify-center items-center " style="background-image:url('https://wallpapercave.com/wp/wp7563284.jpg')">
     <div class="bg-gray-900 text-white p-3 lg:w-1/4 sm:w-4/4 md:w-2/4 rounded text-center py-8 hover:shadow-md cursor-pointer ml-10 mb-20 zoom"
          v-for="members in member" :key="members.id">
