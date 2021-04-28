@@ -1,7 +1,7 @@
 <template>
   <div class="home w-full mx-auto">
     <nav-bar></nav-bar>
-    <div class="carousel relative container mx-auto" style="max-width:1600px;">
+    <div class="carousel relative container mx-auto" style="max-width:1920px;">
         <div class="carousel-inner relative overflow-hidden w-full">
             <!--Slide 1-->
             <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
@@ -28,7 +28,7 @@
                     <div class="container mx-auto">
                         <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
                             <p class="text-white text-2xl my-4">Unpaired Orange And White Nike Air Huarache</p>
-                            <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="#">Nike Air</a>
+                            <a class="text-white text-xl inline-block no-underline border border-white p-1 rounded-md hover:bg-blue-500 hover:border-blue-600 hover:text-blue-50" href="/Products">Shopping now</a>
                         </div>
                     </div>
 
@@ -45,7 +45,7 @@
                     <div class="container mx-auto">
                         <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
                             <p class="text-white text-2xl my-4">White Sneaker Waterproof</p>
-                            <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="#">Adidas</a>
+                            <a class="text-white text-xl inline-block no-underline border border-white p-1 rounded-md hover:bg-blue-500 hover:border-blue-600 hover:text-blue-50" href="/Products">Shopping now</a>
                         </div>
                     </div>
 

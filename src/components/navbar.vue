@@ -1,6 +1,6 @@
 <template>
-    <nav id="header" class="w-full z-30 top-0 py-1 bg-white bg-opacity-90 sticky">
-        <div class="w-full container flex flex-wrap items-center justify-between mt-0 px-6 py-3">
+    <nav id="header" class="w-full z-30 top-0 py-1 bg-white bg-opacity-90 sticky mx-auto">
+        <div class="w-full container flex flex-wrap items-center justify-between mt-0 px-6 py-3 mx-auto">
             <label for="menu-toggle" class="cursor-pointer md:hidden block">
                 <svg class="fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                     <title>menu</title>
@@ -20,7 +20,7 @@
             </div>
 
             <div class="md:flex">
-                <p class="flex items-center tracking-widest no-underline hover:no-underline font-bold text-gray-800 text-xl mr-36">
+                <p class="flex items-center tracking-widest no-underline hover:no-underline font-bold text-gray-800 text-xl mr-48">
                     SHOES-STORE
                 </p>
             </div>
