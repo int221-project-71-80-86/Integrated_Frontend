@@ -177,8 +177,38 @@
                             >Please, Enter your Price</p>
                         </div>
 
+                        <!-- Color -->
+
+                        <div class="flex">
+                            <span class="mr-3 pl-4 block mb-2 text-sm text-gray-600">Color</span>
+                            <input
+                                type="checkbox"
+                                class="ml-1 bg-black rounded-full w-6 h-6 focus:outline-none"
+                                v-model="colors"
+                                value="black"
+                            />
+                            <input
+                                type="checkbox"
+                                class="ml-1 bg-yellow-700 rounded-full w-6 h-6 focus:outline-none"
+                                v-model="colors"
+                                value="yellow"
+                            />
+                            <input
+                                type="checkbox"
+                                class="ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none"
+                                v-model="colors"
+                                value="blue"
+                            />
+                            <input
+                                type="checkbox"
+                                class="ml-1 bg-red-500 rounded-full w-6 h-6 focus:outline-none"
+                                v-model="colors"
+                                value="red"
+                            />
+                        </div>
+
                         <!-- submit -->
-                        <div class="mb-6">
+                        <div class="mb-6 my-6">
                             <button
                                 type="submit"
                                 class="w-40 px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none"
@@ -212,6 +242,7 @@ export default {
             invalidBrandInput: false,
             invalidFileInput: false,
             invalidWarrantyInput: false,
+            invalidColorsInput: false,
             products: [],
         };
     },
@@ -231,6 +262,7 @@ export default {
             this.invalidBrandInput = this.brand === null ? true : false;
             this.invalidFileInput = this.url === null ? true : false;
             this.invalidWarrantyInput = this.warranty === null ? true : false;
+            this.invalidColorsInput = this.colors === null ? true : false;
             if ((!this.invalidNameInput && !this.invalidDateInput && !this.invalidDescInput && !this.invalidPriceInput && !this.invalidBrandInput && !this.invalidFileInput && !this.invalidWarrantyInput)) {
                 {
                     this.addNewForm({
@@ -240,7 +272,8 @@ export default {
                         price: this.price,
                         brand: this.brand,
                         warranty: this.warranty,
-                        url: this.url
+                        url: this.url,
+                        colors : this.colors
                     });
                 }
             }
@@ -250,6 +283,8 @@ export default {
             this.price = null;
             this.brand = null;
             this.warranty = null;
+            this.colors= null;
+            this.url= null;
         },
         async addNewForm(newForm) {
             try {
@@ -266,6 +301,7 @@ export default {
                         brand: newForm.brand,
                         url: newForm.url,
                         warranty: newForm.warranty,
+                        colors : newForm.colors
                     })
                 })
                 const data = await res.json()
