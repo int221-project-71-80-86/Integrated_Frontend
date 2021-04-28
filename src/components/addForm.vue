@@ -3,7 +3,7 @@
         <div class="container mx-auto">
             <div class="max-w-md mx-auto my-10 bg-white p-5 rounded-md shadow-sm">
                 <div class="m-7">
-                    <form action="#" method="#">
+                    <form @submit.prevent="submitForm">
                         <!-- prod Name -->
                         <div class="mb-6">
                             <label for="name" class="block mb-2 text-sm text-gray-600">Product name</label>
@@ -14,8 +14,8 @@
                                 id="name"
                                 class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
                                 require
-                                />
-
+                            />
+                            <p v-if="invalidNameInput" class="text-red-500">Please, Enter your Name</p>
                         </div>
 
                         <!-- prod Date -->
@@ -32,6 +32,7 @@
                                 max="2028-12-31"
                                 v-model="date"
                             />
+                            <p v-if="invalidDateInput" class="text-red-500">Please, Enter your Date</p>
                         </div>
 
                         <!-- prod Description -->
@@ -48,6 +49,11 @@
                                 placeholder="Enter Description"
                                 class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
                             ></textarea>
+
+                            <p
+                                v-if="invalidDescInput"
+                                class="text-red-500"
+                            >Please, Enter your Description</p>
                         </div>
 
                         <!-- brand -->
@@ -71,35 +77,46 @@
                                     v-model="brand"
                                     class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                                 >
-                                    <option selected disabled hidden >Brand</option>
-                                    <option >1</option>
-                                    <option >2</option>
-                                    <option >3</option>
+                                    <option selected disabled hidden>Brand</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
                                 </select>
                             </div>
+                            <p
+                                v-if="invalidBrandInput"
+                                class="text-red-500"
+                            >Please, Enter your Brand</p>
                         </div>
                         <!-- choose file -->
-                       <div id="mb-6 ">
-                       <div v-if="!url">
-                            <label for="file">Upload Image</label>
-                            <div id="preview">
-                                <img class="rounded h-48 w-48 mx-auto my-8" v-if="url" :src="url" />
+                        <div id="mb-6 ">
+                            <div v-if="!url">
+                                <label for="file">Upload Image</label>
+                                <div id="preview">
+                                    <img
+                                        class="rounded h-48 w-48 mx-auto my-8"
+                                        v-if="url"
+                                        :src="url"
+                                    />
+                                </div>
+                                <input
+                                    type="file"
+                                    id="file"
+                                    accept="image/*"
+                                    name="file"
+                                    class="text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
+                                    @change="loadFile"
+                                />
                             </div>
-                            <input
-                                type="file"
-                                id="file"
-                                accept="image/*"
-                                name="file"
-                                class="text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
-                                @change="loadFile"
-                            />
+                            <div v-else>
+                                <img class="rounded h-48 w-48 mx-auto my-8" :src="url" />
+                                <button
+                                    @click="removeimg"
+                                    class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 focus:outline-none px-4 border-b-4 border-blue-dark hover:border-blue rounded"
+                                >Remove image</button>
+                            </div>
+                            <p v-if="invalidFileInput" class="text-red-500">Please, Enter your File</p>
                         </div>
-                        <div v-else>
-                            <img class="rounded h-48 w-48 mx-auto my-8" :src="url" />
-                            <button @click="removeimg" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 focus:outline-none px-4 border-b-4 border-blue-dark hover:border-blue rounded">Remove image</button>
-                          </div>
-
-                    </div>
                         <!-- price -->
                         <div class="flex justify-center items-center my-6">
                             <label for="price" class="pl-4 block mb-2 text-sm text-gray-600">Price</label>
@@ -110,9 +127,8 @@
                                 v-model="price"
                                 class="mx-10 px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
                             />
-                    
                         </div>
-
+                        <p v-if="invalidPriceInput" class="text-red-500">Please, Enter your Price</p>
                         <!-- warranty -->
 
                         <div class="flex flex-col my-4">
@@ -123,7 +139,7 @@
                                     class="form-checkbox h-5 w-5 text-gray-600"
                                     id="warranty"
                                     name="warranty"
-                                    v-model="years"
+                                    v-model="warranty"
                                     value="none"
                                 />
                                 <span class="ml-2 text-gray-700">None</span>
@@ -134,7 +150,7 @@
                                     class="form-checkbox h-5 w-5 text-gray-600"
                                     id="warranty"
                                     name="warranty"
-                                    v-model="years"
+                                    v-model="warranty"
                                     value="1"
                                 />
                                 <span class="ml-2 text-gray-700">1 Year</span>
@@ -145,13 +161,18 @@
                                     class="form-checkbox h-5 w-5 text-gray-600"
                                     id="warranty"
                                     name="warranty"
-                                    v-model="years"
+                                    v-model="warranty"
                                     value="2"
                                 />
                                 <span class="ml-2 text-gray-700">2 Years</span>
                             </label>
+                            <p
+                                v-if="invalidPriceInput"
+                                class="text-red-500"
+                            >Please, Enter your Price</p>
                         </div>
-                    
+
+                      
                         <!-- submit -->
                         <div class="mb-6">
                             <button
@@ -171,15 +192,23 @@ export default {
     name: 'addForm',
     data() {
         return {
+            urlJson: "http://localhost:3000/surveyResults",
             url: null,
-            name:null,
-            date:null,
-            description:null,
-            price:null,
-            brand:null,
-            file:null,
-            years:null,
-            
+            name: null,
+            date: null,
+            description: "",
+            price: null,
+            brand: null,
+            warranty: null,
+            color: [],
+            invalidNameInput: false,
+            invalidDateInput: false,
+            invalidDescInput: false,
+            invalidPriceInput: false,
+            invalidBrandInput: false,
+            invalidFileInput: false,
+            invalidWarrantyInput: false,
+            surveyResults: [],
         };
 
     },
@@ -188,11 +217,87 @@ export default {
         loadFile(e) {
             let file = e.target.files[0];
             this.url = URL.createObjectURL(file);
-            
+
         },
-        removeimg(){
-            this.url=null;
-        }
+        removeimg() {
+            this.url = null;
+        },
+
+        submitForm() {
+
+            this.invalidNameInput = this.name === null ? true : false;
+            this.invalidDateInput = this.date === null ? true : false;
+            this.invalidDescInput = this.description === "" ? true : false;
+            this.invalidPriceInput = this.price === null ? true : false;
+            this.invalidBrandInput = this.brand === null ? true : false;
+            this.invalidFileInput = this.url === null ? true : false;
+            this.invalidWarrantyInput = this.warranty === null ? true : false;
+
+            if ((!this.invalidNameInput && !this.invalidDateInput && !this.invalidDescInput && !this.invalidPriceInput && !this.invalidBrandInput && !this.invalidFileInput && !this.invalidWarrantyInput)) {
+                {
+                    this.addNewForm({
+                        name: this.name,
+                        date: this.date,
+                        description: this.description,
+                        price: this.price,
+                        brand: this.brand,
+                        warranty: this.warranty,
+                        url: this.url
+                    });
+                }
+            }
+
+            this.name = null;
+            this.date = null;
+            this.description = "";
+            this.price = null;
+            this.brand = null;
+            this.warranty = null;
+
+        },
+
+        async addNewForm(newForm) {
+            try {
+                const res = await fetch(this.urlJson, {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: newForm.name,
+                        date: newForm.date,
+                        description: newForm.description,
+                        price: newForm.price,
+                        brand: newForm.brand,
+                        url: newForm.url,
+                        warranty: newForm.warranty,
+                    })
+                })
+                const data = await res.json()
+                this.surveyResults = [...this.surveyResults, data]
+            } catch (error) {
+                console.log(`Could not save! ${error}`)
+            }
+        },
+
+
+        async deleteSurvey(deleteId) {
+            try {
+                await fetch(`${this.urlJson}/${deleteId}`, {
+                    method: 'DELETE'
+                })
+                //filter - higher order function
+                this.surveyResults = this.surveyResults.filter(
+                    (survey) => survey.id !== deleteId
+                )
+            } catch (error) {
+                console.log(`Could not delete! ${error}`)
+            }
+        },
+
+
+
+
     }
 }
 </script>
