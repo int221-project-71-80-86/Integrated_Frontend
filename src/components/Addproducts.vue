@@ -78,9 +78,9 @@
                                     class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                                 >
                                     <option selected disabled hidden>Brand</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
+                                    <option value="1">Nike</option>
+                                    <option value="2">Adidas</option>
+                                    <option value="3">Vans</option>
                                 </select>
                             </div>
                             <p
@@ -88,10 +88,14 @@
                                 class="text-red-500"
                             >Please, Enter your Brand</p>
                         </div>
+
                         <!-- choose file -->
                         <div id="mb-6 ">
                             <div v-if="!url">
-                                <label for="file">Upload Image</label>
+                                <label
+                                    class="block mb-2 text-sm text-gray-600 pb-5"
+                                    for="file"
+                                >Upload Image</label>
                                 <div id="preview">
                                     <img
                                         class="rounded h-48 w-48 mx-auto my-8"
@@ -117,6 +121,7 @@
                             </div>
                             <p v-if="invalidFileInput" class="text-red-500">Please, Enter your File</p>
                         </div>
+
                         <!-- price -->
                         <div class="flex justify-center items-center my-6">
                             <label for="price" class="pl-4 block mb-2 text-sm text-gray-600">Price</label>
@@ -129,8 +134,8 @@
                             />
                         </div>
                         <p v-if="invalidPriceInput" class="text-red-500">Please, Enter your Price</p>
-                        <!-- warranty -->
 
+                        <!-- warranty -->
                         <div class="flex flex-col my-4">
                             <p class="flex justify-start block text-sm text-gray-600">Warranty</p>
                             <label class="inline-flex items-center mt-3">
@@ -148,7 +153,7 @@
                                 <input
                                     type="radio"
                                     class="form-checkbox h-5 w-5 text-gray-600"
-                                    id="warranty"
+                                    id="warranty1"
                                     name="warranty"
                                     v-model="warranty"
                                     value="1"
@@ -159,7 +164,7 @@
                                 <input
                                     type="radio"
                                     class="form-checkbox h-5 w-5 text-gray-600"
-                                    id="warranty"
+                                    id="warranty2"
                                     name="warranty"
                                     v-model="warranty"
                                     value="2"
@@ -172,7 +177,6 @@
                             >Please, Enter your Price</p>
                         </div>
 
-                      
                         <!-- submit -->
                         <div class="mb-6">
                             <button
@@ -189,10 +193,10 @@
 
 <script>
 export default {
-    name: 'addForm',
+    name: 'AddProducts',
     data() {
         return {
-            urlJson: "http://localhost:3000/surveyResults",
+            urlJson: "http://localhost:3000/products",
             url: null,
             name: null,
             date: null,
@@ -200,7 +204,7 @@ export default {
             price: null,
             brand: null,
             warranty: null,
-            color: [],
+            colors: [],
             invalidNameInput: false,
             invalidDateInput: false,
             invalidDescInput: false,
@@ -208,7 +212,7 @@ export default {
             invalidBrandInput: false,
             invalidFileInput: false,
             invalidWarrantyInput: false,
-            surveyResults: [],
+            products: [],
         };
     },
     methods: {
@@ -265,7 +269,7 @@ export default {
                     })
                 })
                 const data = await res.json()
-                this.surveyResults = [...this.surveyResults, data]
+                this.products = [...this.products, data]
             } catch (error) {
                 console.log(`Could not save! ${error}`)
             }
@@ -276,7 +280,7 @@ export default {
                     method: 'DELETE'
                 })
                 //filter - higher order function
-                this.surveyResults = this.surveyResults.filter(
+                this.products = this.products.filter(
                     (survey) => survey.id !== deleteId
                 )
             } catch (error) {
