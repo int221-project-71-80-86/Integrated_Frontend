@@ -1,7 +1,7 @@
 <template>
-<div class="bg-white">
+<div class="bg-white ">
 <nav-bar class="bg-white"></nav-bar>
-<div class="h-screen flex justify-center items-center " style="background-image:url('https://wallpapercave.com/wp/wp7563284.jpg')">
+<div class="h-screen  flex justify-center items-center body" style="background-image:url('https://images.unsplash.com/photo-1596447726719-bd49a6bdb10c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')">
     <div class="bg-gray-900 text-white p-3 lg:w-1/4 sm:w-4/4 md:w-2/4 rounded text-center py-8 hover:shadow-md cursor-pointer ml-10 mb-20 zoom"
          v-for="members in member" :key="members.id">
         <div class="flex justify-center mb-2"> <img class="rounded-full h-24 w-24 flex items-center justify-center" :src="members.img"> </div>
@@ -42,6 +42,10 @@
 }
 .zoom:hover {
   transform: scale(1.15)
+}
+
+.body {
+  
 }
 
 </style>

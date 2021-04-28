@@ -1,0 +1,61 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        "price": 2499,
+        "img": "https://images.unsplash.com/photo-1491553895911-0055eca6402d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+        "showprice": "2,499.00"
+      },
+      {
+        "id": 2,
+        "name": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        "price": 23000,
+        "img": "https://images.unsplash.com/photo-1584545284372-f22510eb7c26?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+        "showprice": "23,000.00"
+      },
+      {
+        "id": 3,
+        "name": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        "price": 399,
+        "img": "https://images.unsplash.com/photo-1605034313761-73ea4a0cfbf3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+        "showprice": "399.00"
+      },
+      {
+        "id": 4,
+        "name": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        "price": 159.99,
+        "img": "https://images.unsplash.com/photo-1518894781321-630e638d0742?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+        "showprice": "159.99"
+      },
+      {
+        "id": 5,
+        "name": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        "price": 89.99,
+        "img": "https://images.unsplash.com/photo-1581397422720-681cce994fee?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=769&q=80",
+        "showprice": "89.99"
+      },
+      {
+        "id": 6,
+        "name": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        "price": 4999,
+        "img": "https://images.unsplash.com/photo-1581327512014-619407b6a116?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=829&q=80",
+        "showprice": "4,999.00"
+      },
+      {
+        "id": 7,
+        "name": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        "price": 199.99,
+        "img": "https://images.unsplash.com/photo-1544327415-cfb77383dabc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=778&q=80",
+        "showprice": "2,999.99"
+      },
+      {
+        "id": 8,
+        "name": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        "price": 1699,
+        "img": "https://images.unsplash.com/photo-1551726195-0c4e3e49f2a0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80",
+        "showprice": "1,699.00"
+      }
+    ],
+    "cart": []
+  }

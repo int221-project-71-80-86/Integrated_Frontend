@@ -1,17 +1,17 @@
 <template>
   <div class="home w-full mx-auto">
     <nav-bar></nav-bar>
-    <div class="carousel relative container mx-auto" style="max-width:1600px;">
+    <div class="carousel relative container mx-auto" style="max-width:1920px;">
         <div class="carousel-inner relative overflow-hidden w-full">
             <!--Slide 1-->
             <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
-            <div class="carousel-item absolute opacity-0" style="height:50vh;">
+            <div class="carousel-item absolute opacity-0" style="height:100vh;">
                 <div class="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1546367564-ade1880f8921?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80');">
 
                     <div class="container mx-auto">
                         <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
                             <p class="text-white text-2xl my-4">Outdoor Leather Shoes</p>
-                            <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="#">Outdoor</a>
+                            <a class="text-white text-xl inline-block no-underline border border-white p-1 rounded-md hover:bg-blue-500 hover:border-blue-600 hover:text-blue-50" href="/Products">Shopping now</a>
                         </div>
                     </div>
 
@@ -22,13 +22,13 @@
 
             <!--Slide 2-->
             <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
-            <div class="carousel-item absolute opacity-0 bg-cover bg-right" style="height:50vh;">
+            <div class="carousel-item absolute opacity-0 bg-cover bg-right" style="height:100vh;">
                 <div class="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-right" style="background-image: url('https://images.unsplash.com/photo-1465877783223-4eba513e27c6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
 
                     <div class="container mx-auto">
                         <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
                             <p class="text-white text-2xl my-4">Unpaired Orange And White Nike Air Huarache</p>
-                            <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="#">Nike Air</a>
+                            <a class="text-white text-xl inline-block no-underline border border-white p-1 rounded-md hover:bg-blue-500 hover:border-blue-600 hover:text-blue-50" href="/Products">Shopping now</a>
                         </div>
                     </div>
 
@@ -39,13 +39,13 @@
 
             <!--Slide 3-->
             <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
-            <div class="carousel-item absolute opacity-0" style="height:50vh;">
+            <div class="carousel-item absolute opacity-0" style="height:100vh;">
                 <div class="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1465479423260-c4afc24172c6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
 
                     <div class="container mx-auto">
                         <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
                             <p class="text-white text-2xl my-4">White Sneaker Waterproof</p>
-                            <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="#">Adidas</a>
+                            <a class="text-white text-xl inline-block no-underline border border-white p-1 rounded-md hover:bg-blue-500 hover:border-blue-600 hover:text-blue-50" href="/Products">Shopping now</a>
                         </div>
                     </div>
 
