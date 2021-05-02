@@ -143,7 +143,6 @@
                                     type="radio"
                                     class="form-checkbox h-5 w-5 text-gray-600"
                                     id="warranty"
-                                    name="warranty"
                                     v-model="warranty"
                                     value="none"
                                 />
@@ -154,7 +153,6 @@
                                     type="radio"
                                     class="form-checkbox h-5 w-5 text-gray-600"
                                     id="warranty1"
-                                    name="warranty"
                                     v-model="warranty"
                                     value="1"
                                 />
@@ -165,7 +163,6 @@
                                     type="radio"
                                     class="form-checkbox h-5 w-5 text-gray-600"
                                     id="warranty2"
-                                    name="warranty"
                                     v-model="warranty"
                                     value="2"
                                 />
@@ -224,17 +221,70 @@
 <script>
 export default {
     name: 'AddProducts',
+    props: {
+
+        oldId: {
+            type: Number,
+            required: false,
+            default: null
+        },
+        oldUrl: {
+            type: String,
+            required: false,
+            default: null,
+        },
+        oldName: {
+            type: String,
+            required: false,
+            default: null,
+        },
+        oldDate: {
+            type: String,
+            required: false,
+            default: null,
+        },
+        oldDescription: {
+            type: String,
+            required: false,
+            default: "",
+        },
+        oldPrice: {
+            type: String,
+            required: false,
+            default: null,
+        },
+        oldBrand: {
+            type: String,
+            required: false,
+            default: null,
+        },
+        oldWarrnaty: {
+            type: String,
+            required: false,
+            default: null,
+        },
+        oldColors: {
+            type: Array,
+            default(){
+             return [] 
+            } 
+        },
+
+    },
+    emits: ['new-product'],
     data() {
         return {
             urlJson: "http://localhost:3000/products",
-            url: null,
-            name: null,
-            date: null,
-            description: "",
-            price: null,
-            brand: null,
-            warranty: null,
-            colors: [],
+            id: this.oldId,
+            url: this.oldUrl,
+            name: this.oldName,
+            date: this.oldDate,
+            description: this.oldDescription,
+            price: this.oldPrice,
+            brand: this.oldBrand,
+            warranty: this.oldWarrnaty,
+            colors: this.oldColors,
+
             invalidNameInput: false,
             invalidDateInput: false,
             invalidDescInput: false,
@@ -246,6 +296,7 @@ export default {
             products: [],
         };
     },
+
     methods: {
         loadFile(e) {
             let file = e.target.files[0];
@@ -273,19 +324,36 @@ export default {
                         brand: this.brand,
                         warranty: this.warranty,
                         url: this.url,
-                        colors : this.colors
+                        colors: this.colors
                     });
                 }
+
+                this.id = null
+                this.name = null
+                this.date = null
+                this.description = ""
+                this.price = null
+                this.brand = null
+                this.warranty = null
+                this.colors = null
+                this.url = null
+
             }
-            this.name = null;
-            this.date = null;
-            this.description = "";
-            this.price = null;
-            this.brand = null;
-            this.warranty = null;
-            this.colors= null;
-            this.url= null;
+            const newProduct = {
+                id: this.id,
+                name: this.name,
+                date: this.date,
+                description: this.description,
+                price: this.price,
+                brand: this.brand,
+                warranty: this.warranty,
+                url: this.url,
+                colors: this.colors
+            }
+
+            this.$emit('new-product', newProduct)
         },
+
         async addNewForm(newForm) {
             try {
                 const res = await fetch(this.urlJson, {
@@ -301,26 +369,13 @@ export default {
                         brand: newForm.brand,
                         url: newForm.url,
                         warranty: newForm.warranty,
-                        colors : newForm.colors
+                        colors: newForm.colors
                     })
                 })
                 const data = await res.json()
                 this.products = [...this.products, data]
             } catch (error) {
                 console.log(`Could not save! ${error}`)
-            }
-        },
-        async deleteSurvey(deleteId) {
-            try {
-                await fetch(`${this.urlJson}/${deleteId}`, {
-                    method: 'DELETE'
-                })
-                //filter - higher order function
-                this.products = this.products.filter(
-                    (survey) => survey.id !== deleteId
-                )
-            } catch (error) {
-                console.log(`Could not delete! ${error}`)
             }
         },
     }
