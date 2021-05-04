@@ -1,0 +1,181 @@
+<template>
+        <!-- Paging -->
+        <div id="paging">
+          <p class="text-center">TEST PAGING</p>
+          <div class="flex space-x-5 justify-center">
+            <button @click="fetchProduct(i)" v-for="i in pageTotal" :key="i" 
+                    class=" w-10 h-8 align-middle bg-gray-400" 
+                    :class="{ 'bg-green-400': checkCurrentPage(i) }">{{i}}</button>
+          </div>   
+        </div>
+
+  <div class="container mx-auto flex items-start flex-wrap pt-4 pb-12">
+    <div
+      class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col"
+      v-for="item in showproducts"
+      :key="item.productcode"
+    >
+      <img class="hover:grow hover:shadow-lg zoom w-80 h-80" :src="getImages(item.image)" />
+      
+      <div class="pt-5 flex items-center justify-between">
+        <p class="text-lg font-semibold italic">{{ item.name }}</p>
+      </div>
+      <p class="text-base font-semibold italic">{{ getBrandName(item.brandid) }}</p>
+      <p>{{ item.description }}</p>
+      <p>Warranty :{{ item.warranty }} years.</p>
+      <p>Release Date: {{ item.date }}</p>
+      <p class="pt-1 text-gray-900">฿ {{ item.price }}</p>
+      <div class="flex mt-6 items-center pb-5 mb-2">
+        <div class="flex" v-for="c in item.productcolors" :key="c.colors.colorid">
+          <div
+          :style="{'background-color': c.colors.colorcode}"
+            class="ml-1 rounded-full w-6 h-6 focus:outline-none border-2 border-black" 
+          ></div>
+        </div>
+      </div>
+
+      <div class="flex inline-flex">
+        <button
+          class="inline-flex items-center justify-center w-10 h-10 text-gray-700 transition-colors duration-150 bg-white rounded-full focus:shadow-outline hover:bg-gray-200"
+          @click="editProduct(item)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-5 17l1.006-4.036 3.106 3.105-4.112.931zm5.16-1.879l-3.202-3.202 5.841-5.919 3.201 3.2-5.84 5.921z" />
+          </svg>
+        </button>
+        <button
+          class="inline-flex items-center justify-center w-10 h-10 text-gray-700 transition-colors duration-150 bg-white rounded-full focus:shadow-outline hover:bg-gray-200"
+          @click="deleteProduct(item.productcode)"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.151 17.943l-4.143-4.102-4.117 4.159-1.833-1.833 4.104-4.157-4.162-4.119 1.833-1.833 4.155 4.102 4.106-4.16 1.849 1.849-4.1 4.141 4.157 4.104-1.849 1.849z"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div v-if="edit">
+      <Addproducts :product="editingProduct" @new-product="editProduct"></Addproducts>
+    </div>
+  </div>
+</template>
+
+<script>
+import Addproducts from "@/components/Addproducts";
+
+export default {
+  name: "showProducts",
+  components: {
+    Addproducts,
+  },
+  props: {
+        product: Object, 
+        isedit: Boolean
+    },
+   emits: ['edit','cancel'],
+  data() {
+    return {
+      urlproduct: "http://localhost:8083",
+      showproducts: [],
+      pageInfo: null,
+      brandCode: [],
+      colorCode: [],
+      pageTotal: null,
+      editingProduct: null
+    };
+  },
+  methods: {
+    async fetchProduct(pageNo = 1) {
+      const res = await fetch(`${this.urlproduct}/products?pageNo=${pageNo-1}`);
+      const data = await res.json();
+      this.showproducts = data.content;
+      this.pageInfo = data.pageable;
+      this.pageTotal = data.totalPages;
+      this.sortColors(this.showproducts);
+      // console.log(this.showproducts)
+      // console.log(this.pageInfo)
+      // console.log(this.pageTotal)
+      // parses JSON response into native JavaScript objects
+      return;
+    },
+    async fetchBrands(){
+      const res = await fetch(`${this.urlproduct}/brands`);
+      const data = await res.json();
+      this.brandCode = data;
+      // console.log(this.brandCode)
+      // parses JSON response into native JavaScript objects
+      return;
+    },
+      async fetchColors(){
+      const res = await fetch(`${this.urlproduct}/colors`);
+      const data = await res.json();
+      this.colorCode = data;
+      // console.log(this.colorCode)
+      // parses JSON response into native JavaScript objects
+      return;
+    },
+    async deleteProduct(productcode){
+      if(confirm("Do you really want to delete this product?")){
+        try {
+          const res = await fetch(`${this.urlproduct}/delete/${productcode}`, {
+            method: 'DELETE'
+          });
+          if(res.status === 200){
+            this.showproducts = this.showproducts.filter((product) => product.productcode !== productcode)
+            alert("Successfully Remove the product")
+          } else {
+            alert("Error Deleting Product")
+          }
+        } catch (error) {
+          console.log(error)
+        }
+      } else {
+        return
+      } 
+    },
+    editProduct(item){ 
+      this.$emit('edit', item)
+    },
+    cancelEdit(){
+      this.edit = false;
+    },
+    getImages(image){
+      return `${this.urlproduct}/files/${image}`
+    }, 
+    sortColors(product){
+      product.forEach(p => {
+        p.productcolors.sort(function(a, b){return a.colors.colorid - b.colors.colorid});
+      });
+    },
+    checkCurrentPage(i){
+    return this.pageInfo.pageNumber+1 == i 
+  },     
+    getBrandName(bid){
+      for (let i = 0; i < this.brandCode.length; i++) {
+        if(this.brandCode[i].brandid == bid){
+          return this.brandCode[i].name;
+        }
+      }
+    }
+  },
+  async created() {
+    await this.fetchBrands();
+    await this.fetchColors();
+    await this.fetchProduct();
+  }, 
+}
+</script>
+
+<style scoped>
+.zoom {
+  transition: transform 0.3s;
+}
+.zoom:hover {
+  transform: scale(1.07);
+}
+</style>
