@@ -1,39 +1,34 @@
 <template>
-        <!-- Paging -->
-        <div id="paging">
-          <p class="text-center">TEST PAGING</p>
-          <div class="flex space-x-5 justify-center">
-            <button @click="fetchProduct(i)" v-for="i in pageTotal" :key="i" 
-                    class=" w-10 h-8 align-middle bg-gray-400" 
-                    :class="{ 'bg-green-400': checkCurrentPage(i) }">{{i}}</button>
-          </div>   
-        </div>
-
-  <div class="container mx-auto flex items-start flex-wrap pt-4 pb-12">
+<div>
+  <div class="container mx-auto flex items-start flex-wrap pt-4 pb-12 md:flex">
     <div
-      class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col"
+      class="w-full md:w-1/2 lg:w-1/4 p-6 flex flex-col "
       v-for="item in showproducts"
       :key="item.productcode"
     >
+  <div>
       <img class="hover:grow hover:shadow-lg zoom w-80 h-80" :src="getImages(item.image)" />
       
       <div class="pt-5 flex items-center justify-between">
         <p class="text-lg font-semibold italic">{{ item.name }}</p>
       </div>
       <p class="text-base font-semibold italic">{{ getBrandName(item.brandid) }}</p>
-      <p>{{ item.description }}</p>
-      <p>Warranty :{{ item.warranty }} years.</p>
-      <p>Release Date: {{ item.date }}</p>
-      <p class="pt-1 text-gray-900">฿ {{ item.price }}</p>
-      <div class="flex mt-6 items-center pb-5 mb-2">
-        <div class="flex" v-for="c in item.productcolors" :key="c.colors.colorid">
+      
+      <p class="text-sm text-gray-400 italic">{{ item.description }}</p>
+      <p class="text-base font-semibold italic">Warranty - {{ item.warranty }} years.</p>
+      <p class="text-base font-semibold italic">Release Date - {{ item.date }}</p>
+      <p class="text-base font-semibold italic">฿ {{ pricenumber(item.price) }}</p>
+      <div class="flex space-x-1 items-center mt-1 mb-1"><span class="text-base font-semibold italic">Color </span>
+        <span class="text-xl font-semibold italic"> [ </span>
+        <div class="" v-for="c in item.productcolors" :key="c.colors.colorid">
           <div
           :style="{'background-color': c.colors.colorcode}"
-            class="ml-1 rounded-full w-6 h-6 focus:outline-none border-2 border-black" 
+            class="rounded-full w-6 h-6 focus:outline-none border-2 border-black" 
           ></div>
         </div>
+        <span class="text-xl font-semibold italic"> ] </span>
       </div>
-
+  </div>
       <div class="flex inline-flex">
         <button
           class="inline-flex items-center justify-center w-10 h-10 text-gray-700 transition-colors duration-150 bg-white rounded-full focus:shadow-outline hover:bg-gray-200"
@@ -62,7 +57,17 @@
     <div v-if="edit">
       <Addproducts :product="editingProduct" @new-product="editProduct"></Addproducts>
     </div>
+    <!-- Paging -->
   </div>
+  <div id="paging" class="mb-5 -mt-8">
+          <div class="flex space-x-5 justify-center">
+            <button @click="fetchProduct(i)" v-for="i in pageTotal" :key="i" 
+                    class=" w-10 h-8 align-middle bg-gray-400" 
+                    :class="{ 'bg-green-400': checkCurrentPage(i) }">{{i}}</button>
+          </div>   
+        </div>
+      
+          </div>
 </template>
 
 <script>
@@ -161,6 +166,9 @@ export default {
           return this.brandCode[i].name;
         }
       }
+    },
+     pricenumber(price){
+     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
   },
   async created() {
@@ -168,6 +176,9 @@ export default {
     await this.fetchColors();
     await this.fetchProduct();
   }, 
+  
+ 
+ 
 }
 </script>
 
