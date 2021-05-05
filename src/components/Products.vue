@@ -1,24 +1,19 @@
 <template>
+<div>
   <nav-bar></nav-bar>
-  <div class="flex justify-start">
-    <div v-if="backTab">
-      <button class="focus:outline-none" @click="addTab">
-        <p v-if="backTab" class="p-1 hover:bg-gray-500 hover:text-white rounded-lg">Add products</p>
+            <div id="store" class="w-full z-30 top-0 px-6 py-1">
+                <div class="w-full container mx-auto flex flex-wrap items-center justify-end mt-0 px-2 py-3">
+<div v-if="backTab">
+                    <button class="focus:outline-none border-2 border-blue-700 rounded-full p-1 hover:bg-blue-700 hover:text-white mt-5 lg:48 mr-8" @click="addTab">
+        <p v-if="backTab" class="p-1 hover:text-white">ADD PRODUCTS</p>
       </button>
-    </div>
-    <div v-else>
-      <button @click="back">
-        <p
-          v-if="!backTab"
-          class="p-1 hover:bg-gray-500 hover:text-white rounded-lg"
-        >Back to Products</p>
-      </button>
-    </div>
+</div>
   </div>
+ </div>
   <component @back="back" @edit="editProduct" :isedit="isEdit" :product="passingProduct" :is="showTab"></component>
+  </div>
 </template>
 <script>
-
 import Addproducts from "@/components/Addproducts"
 import showProducts from "@/components/showProducts"
 

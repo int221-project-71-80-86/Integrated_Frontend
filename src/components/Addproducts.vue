@@ -1,12 +1,12 @@
 <template>
-    <div class="flex items-center min-h-screen bg-gray-600 dark:bg-gray-900">
+    <div class="flex items-center min-h-screen bg-gray-600 dark:bg-gray-900 mt-2">
         <div class="container mx-auto">
             <div class="max-w-md mx-auto my-10 bg-white p-5 rounded-md shadow-sm">
-                <div class="m-7">
+                <div class="m-5">
                     <form @submit.prevent="submitForm" enctype="multipart/form-data">
                         <!-- prod Name -->
                         <div class="mb-6">
-                            <label for="name" class="block mb-2 text-sm text-gray-600">Product Name</label>
+                            <label for="name" class="block mb-2 text-sm text-black font-medium">Product Name</label>
                             <input
                                 type="text" name="name" v-model="name" id="name"
                                 class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
@@ -19,7 +19,7 @@
                         <div class="mb-6">
                             <label
                                 for="date"
-                                class="block mb-2 text-sm text-gray-600"
+                                class="block mb-2 text-sm text-black font-medium"
                             >Manufacturer Date</label>
                             <input
                                 type="date"
@@ -36,7 +36,7 @@
                         <div class="mb-6">
                             <label
                                 for="description"
-                                class="block mb-2 text-sm text-gray-600"
+                                class="block mb-2 text-sm text-black font-medium"
                             >Product Description</label>
                             <textarea
                                 rows="5"
@@ -72,7 +72,7 @@
                         <div id="mb-6 ">
                             <div v-if="!image">
                                 <label
-                                    class="block mb-2 text-sm text-gray-600 pb-5"
+                                    class="block mb-2 text-sm text-black font-medium pb-5"
                                     for="file"
                                 >Upload Image</label>
                                 <div id="preview">
@@ -102,8 +102,8 @@
                         </div>
 
                         <!-- price -->
-                        <div class="flex justify-center items-center my-6">
-                            <label for="price" class="pl-4 block mb-2 text-sm text-gray-600">Price</label>
+                        <div class="flex justify-center items-center my-6 text-black font-medium">
+                            <label for="price" class="pl-4 block mb-2 text-sm text-black font-medium">Price</label>
                             <input
                                 type="number"
                                 step="0.01"
@@ -119,7 +119,7 @@
 
                         <!-- warranty -->
                         <div class="flex flex-col my-4">
-                            <p class="flex justify-start block text-sm text-gray-600">Warranty</p>
+                            <p class="flex justify-start block text-sm text-black font-medium">Warranty</p>
                             <label class="inline-flex items-center mt-3">
                                 <input
                                     type="radio"
@@ -159,8 +159,8 @@
                         <!-- Color -->
 
                         <div class="">
-                            <span class="mr-3 pl-4 block mb-2 text-sm text-gray-600">Color</span>
-                            <div class="flex flex-col space-y-3 space-x-3 justify-items-start">
+                            <span class="mr-3 block mb-2 text-sm text-black font-medium">Color</span>
+                            <div class="flex flex-col space-y-3 justify-items-start">
                                 <div class="flex items-center justify-start space-x-3" v-for="color in colorsDB" :key="color.colorid">
                                     <input class="w-6 h-6" type="checkbox" v-model="colors" :value="color.colorid"/>
                                     <div class="color-circle rounded-full w-8 h-8 border-2 border-black" :style="{backgroundColor: color.colorcode}"></div>
