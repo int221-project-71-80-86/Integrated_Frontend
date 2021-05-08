@@ -196,10 +196,10 @@ export default {
         product: Object, 
         isedit: Boolean
     },
-    emits: ['back'],
+    emits: ['back','edit'],
     data() {
         return {
-            urlJson: "http://localhost:8083",
+            urlJson: "http://172.23.0.2:8083",
             productcode: 0,
             image: null,
             name: '',
@@ -234,7 +234,7 @@ export default {
              if(this.isLocal){
                  return this.image
              }
-                 return `http://localhost:8083/files/${filename}`
+                 return `http://172.23.0.2:8083/files/${filename}`
         },
         loadFile(e) {
             this.isLocal = true;

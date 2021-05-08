@@ -54,9 +54,6 @@
         </button>
       </div>
     </div>
-    <div v-if="edit">
-      <Addproducts :product="editingProduct" @new-product="editProduct"></Addproducts>
-    </div>
     <!-- Paging -->
   </div>
   <div id="paging" class="mb-5 -mt-8">
@@ -71,21 +68,18 @@
 </template>
 
 <script>
-import Addproducts from "@/components/Addproducts";
+
 
 export default {
   name: "showProducts",
-  components: {
-    Addproducts,
-  },
   props: {
         product: Object, 
         isedit: Boolean
     },
-   emits: ['edit','cancel'],
+   emits: ['edit','cancel','back'],
   data() {
     return {
-      urlproduct: "http://localhost:8083",
+      urlproduct: "http://172.23.0.2:8083",
       showproducts: [],
       pageInfo: null,
       brandCode: [],
@@ -145,9 +139,6 @@ export default {
     },
     editProduct(item){ 
       this.$emit('edit', item)
-    },
-    cancelEdit(){
-      this.edit = false;
     },
     getImages(image){
       return `${this.urlproduct}/files/${image}`

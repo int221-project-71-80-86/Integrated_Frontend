@@ -3,7 +3,7 @@ services:
       build: .
       image: frontend
       ports:
-        - "80:80"
+        - "8080:8080"
       networks:
         test:
             ipv4_address: 172.23.0.1
