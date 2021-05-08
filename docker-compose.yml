@@ -6,7 +6,7 @@ services:
         - "8080:8080"
       networks:
         test:
-            ipv4_address: 172.23.0.1
+            ipv4_address: 172.23.1.1
 networks:
   test:
     external:
