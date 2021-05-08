@@ -79,7 +79,7 @@ export default {
    emits: ['edit','cancel','back'],
   data() {
     return {
-      urlproduct: "http://172.23.20.2:8083",
+      urlproduct: "http://52.148.79.33:8083",
       showproducts: [],
       pageInfo: null,
       brandCode: [],
