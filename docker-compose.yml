@@ -1,0 +1,6 @@
+services:
+    ratings:
+      build: .
+      image: frontend
+      ports:
+        - "8080:8080"
