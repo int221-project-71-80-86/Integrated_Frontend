@@ -30,6 +30,11 @@ const routes = [
     name: 'showProducts',
     component: showProducts
   },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: Home
+  }
     
 ]
 
