@@ -1,6 +1,13 @@
 services:
-    ratings:
+    frontend:
       build: .
       image: frontend
       ports:
         - "8080:8080"
+      networks:
+        test:
+            ipv4_address: 172.23.0.1
+networks:
+  test:
+    external:
+      name: testNetwork2
