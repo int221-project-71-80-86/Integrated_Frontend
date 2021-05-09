@@ -119,7 +119,7 @@
 
                         <!-- warranty -->
                         <div class="flex flex-col my-4">
-                            <p class="flex justify-start block text-sm text-black font-medium">Warranty</p>
+                            <p class="flex justify-start text-sm text-black font-medium">Warranty</p>
                             <label class="inline-flex items-center mt-3">
                                 <input
                                     type="radio"
