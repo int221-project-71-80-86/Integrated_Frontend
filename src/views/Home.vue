@@ -6,7 +6,7 @@
             <!--Slide 1-->
             <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
             <div class="carousel-item absolute opacity-0" style="height:100vh;">
-                <div class="block h-full w-full mx-auto pt-6 md:pt-0 md:items-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1546367564-ade1880f8921?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80');">
+                <div class="h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1546367564-ade1880f8921?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80');">
 
                     <div class="container mx-auto">
                         <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
