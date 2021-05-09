@@ -29,7 +29,7 @@
         <span class="text-xl font-semibold italic"> ] </span>
       </div>
   </div>
-      <div class="flex inline-flex">
+      <div class="flex">
         <button
           class="inline-flex items-center justify-center w-10 h-10 text-gray-700 transition-colors duration-150 bg-white rounded-full focus:shadow-outline hover:bg-gray-200"
           @click="editProduct(item)">
