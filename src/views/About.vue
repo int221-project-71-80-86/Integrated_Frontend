@@ -44,8 +44,6 @@
   transform: scale(1.15)
 }
 
-.body {
-  
-}
+
 
 </style>
